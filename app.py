@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     message = ""
     if request.method == 'POST':
-        message = "🎉 Happy New Year 2026! 🎆"
+        message = "🎉 Happy New Year 2026! 🎆 "
     return render_template('index.html', message=message)
 
 if __name__ == '__main__':
