@@ -32,8 +32,10 @@ pipeline {
                 script{
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-token') {
                     docker.image("pradyu07/my1app:${BUILD_NUMBER}").push()
+                    }
                 }
             }
         }
     }
 }
+    
