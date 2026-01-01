@@ -30,10 +30,8 @@ pipeline {
         stage('Push the artifacts'){
            steps{
                 script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push pradyu07/my1app:${BUILD_NUMBER}
-                    '''
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-token') {
+                    docker.image("pradyu07/my1app:${BUILD_NUMBER}").push()
                 }
             }
         }
