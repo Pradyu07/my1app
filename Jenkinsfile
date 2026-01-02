@@ -22,7 +22,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} 
+                    docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} .
                     '''
                 }
             }
