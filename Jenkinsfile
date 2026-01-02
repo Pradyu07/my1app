@@ -42,6 +42,7 @@ pipeline {
                 // Uses the Kubeconfig to apply the manifests to your local cluster
                 withKubeConfig([credentialsId: 'k8s-config']) {
                     sh "sed -i 's|IMAGE_PLACEHOLDER|${IMAGE_NAME}:${IMAGE_TAG}|g' deployment.yaml"
+					sh "kubectl cluster-info" // If this works, your ID is correct!
                 // Apply everything inside the 'deploy' directory
                     sh "kubectl apply -f deploy/"
 					}
