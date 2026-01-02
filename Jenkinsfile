@@ -3,6 +3,7 @@ pipeline {
     agent any 
     
     environment {
+        IMAGE_NAME = "pradyu07/my1app"
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
     
@@ -21,7 +22,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t pradyu07/my1app:${BUILD_NUMBER} .
+                    docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} 
                     '''
                 }
             }
@@ -31,7 +32,7 @@ pipeline {
            steps{
                 script{
                     docker.withRegistry('https://index.docker.io/v1/', 'docker-hub-token') {
-                    docker.image("pradyu07/my1app:${BUILD_NUMBER}").push()
+                    docker.image("${IMAGE_NAME}:${BUILD_NUMBER}").push()
                     }
                 }
             }
